@@ -33,8 +33,25 @@ public class Streams {
         System.out.println(nums_);
     }
 
+    // flat maps
+    private static void two() {
+        ArrayList<ArrayList<String>> groceries = new ArrayList<>(List.of(new ArrayList<>(List.of("Apple", "Banana")), new ArrayList<>(List.of("Milk", "Cheese"))));
+        List<String> groceries_ = groceries.stream()
+                .flatMap(Collection::stream)
+                .toList();
+        System.out.println(groceries_);
+
+        ArrayList<String> unique =  new ArrayList<>(List.of("Java", "Code"));
+        List<String> unique_ = unique.stream()
+                .map(u -> u.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .toList();
+        System.out.println(unique_);
+    }
+
     public static void main(String[] args) {
 
-        Streams.one();
+        Streams.two();
     }
 }
