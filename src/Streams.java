@@ -4,6 +4,12 @@ import java.util.stream.Collectors;
 
 public class Streams {
 
+    private static record Employee(
+            String name,
+            String department,
+            int salary
+    ) {}
+
     // mapping, filtering and collecting
     private static void one() {
         ArrayList<String> names = new ArrayList<>(List.of("Java", "Joe", "James", "Alice", "June"));
@@ -116,8 +122,29 @@ public class Streams {
         System.out.println(nums_);
     }
 
+    // final all-incorporating question
+    private static void seven() {
+        ArrayList<Employee> employees = new ArrayList<>(List.of(
+                new Employee("Alice", "Sales", 50000),
+                new Employee("Bob", "Engineering", 80000),
+                new Employee("Charlie", "Sales", 60000),
+                new Employee("David", "Sales", 45000),
+                new Employee("Eve", "Engineering", 90000),
+                new Employee("Frank", "Sales", 75000),
+                new Employee("Grace", "Sales", 55000)
+        ));
+
+        int sum = employees.stream()
+                .filter(e -> e.department() == "Sales")
+                .map(Employee::salary)
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .reduce(0, Integer::sum);
+        System.out.println(sum);
+    }
+
     public static void main(String[] args) {
 
-        Streams.six();
+        Streams.seven();
     }
 }
