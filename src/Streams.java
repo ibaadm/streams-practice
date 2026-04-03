@@ -69,8 +69,30 @@ public class Streams {
         System.out.println(words_);
     }
 
+    // method instances
+    private static void four() {
+        ArrayList<Double> numbers = new ArrayList<>(List.of(4.0, 9.0, 16.0));
+        List<Double> numbers_ = numbers.stream()
+                .map(Math::sqrt)
+                .toList();
+        System.out.println(numbers_);
+
+        ArrayList<String> words = new ArrayList<>(List.of("A", "", "B", ""));
+        long words_ = words.stream()
+                .filter(String::isEmpty)
+                .count();
+        System.out.println(words_);
+
+        ArrayList<String> names = new ArrayList<>(List.of("Joe", "James", "Alice", "June"));
+        LinkedList<String> names_ = names.stream()
+                .collect(Collectors.toCollection(LinkedList::new));
+
+        ArrayList<Integer> ids = new ArrayList<>(List.of(1, 2, 3, 4));
+        ids.forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
 
-        Streams.three();
+        Streams.four();
     }
 }
