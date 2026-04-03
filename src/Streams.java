@@ -109,8 +109,15 @@ public class Streams {
         user.orElseThrow(IllegalStateException::new);
     }
 
+    // reducing
+    private static void six() {
+        ArrayList<Integer> nums = new ArrayList<>(List.of(1, 2, 3, 4));
+        int nums_ = nums.stream().reduce(0, Integer::sum);
+        System.out.println(nums_);
+    }
+
     public static void main(String[] args) {
 
-        Streams.five();
+        Streams.six();
     }
 }
