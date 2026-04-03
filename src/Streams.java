@@ -50,8 +50,27 @@ public class Streams {
         System.out.println(unique_);
     }
 
+    // sorting, joining and collecting
+    private static void three() {
+        ArrayList<Integer> scores =  new ArrayList<>(List.of(10, 50, 20, 40));
+        List<Integer> scores_ = scores.stream()
+                .sorted(Comparator.reverseOrder())
+                .toList();
+        System.out.println(scores_);
+
+        ArrayList<String> colours = new ArrayList<>(List.of("Red", "Green", "Blue"));
+        String colours_ = colours.stream()
+                .collect(Collectors.joining("|"));
+        System.out.println(colours_);
+
+        ArrayList<String> words = new ArrayList<>(List.of("apple", "apple", "orange"));
+        Set<String> words_ = words.stream()
+                .collect(Collectors.toSet());
+        System.out.println(words_);
+    }
+
     public static void main(String[] args) {
 
-        Streams.two();
+        Streams.three();
     }
 }
