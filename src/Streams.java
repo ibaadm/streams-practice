@@ -91,8 +91,26 @@ public class Streams {
         ids.forEach(System.out::println);
     }
 
+    // optionals
+    private static void five() {
+        ArrayList<Integer> onums = new ArrayList<>();
+        Integer onums_ = onums.stream()
+                .findFirst()
+                .orElse(-1);
+        System.out.println(onums_);
+
+        Optional<String> status = Optional.of("active");
+        status.ifPresent(System.out::println);
+
+        Optional<String> email = Optional.of("USER@EXAMPLE.COM");
+        email.map(String::toLowerCase).ifPresent(System.out::println);
+
+        Optional<String> user = Optional.empty();
+        user.orElseThrow(IllegalStateException::new);
+    }
+
     public static void main(String[] args) {
 
-        Streams.four();
+        Streams.five();
     }
 }
